@@ -4,24 +4,14 @@ import heapq
 input = sys.stdin.readline
 
 N = int(input())
-positive = []
-negative = []
+x_list = []    # 힙 생성
 
 for _ in range(N):
     x = int(input())
-    if x == 0:
-        if positive and negative:
-            if positive[0] >= negative[0]:
-                print(-heapq.heappop(negative))
-            else:
-                print(heapq.heappop(positive))
-        elif positive and not negative:
-            print(heapq.heappop(positive))
-        elif negative and not positive:
-            print(-heapq.heappop(negative))    
-        else:
+    if x == 0:    # 힙에서 값 뽑아오기
+        if x_list:    # 힙이 비어있지 않다면
+            print(heapq.heappop(x_list)[1])
+        else:    # 힙이 비어있으면 0 출력
             print(0)
-    elif x > 0:
-        heapq.heappush(positive, x)
-    else:
-        heapq.heappush(negative, -x)
+    else:    # 힙에 값 넣기
+        heapq.heappush(x_list, (abs(x), x))
