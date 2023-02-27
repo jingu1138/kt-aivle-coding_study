@@ -6,7 +6,7 @@ input = sys.stdin.readline
 deq = deque()
 n = int(input())
 for _ in range(n):
-    a = input().split()
+    a = input().strip()
     
     if ' ' in a:
         b, c = a.split()
@@ -14,20 +14,26 @@ for _ in range(n):
         b = a
     
     if b == 'push':
-        deq.append(c)
+        deq.append(int(c))
     elif b == 'pop':
         if deq:
-            print(deq.pop())
+            print(deq.popleft())
         else:
-            print('0')
+            print(-1)
     elif b == 'size':
-        print(deq.size())
+        print(len(deq))
     elif b == 'empty':
         if deq:
-            print('0')
+            print(0)
         else:
-            print('1')
+            print(1)
     elif b == 'front':
-        print(deq[len(deq)-1])
+        if deq:
+            print(deq[0])
+        else:
+            print(-1)
     elif b == 'back':
-        print(deq[0])
+        if deq:
+            print(deq[-1])
+        else:
+            print(-1)
