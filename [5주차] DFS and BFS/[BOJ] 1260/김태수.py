@@ -2,13 +2,13 @@ from collections import deque
 
 n, m ,v = map(int, input().split())
 
-graph = [[0]*(n+1) for _ in range(n+1)]
+graph = [[]*(n+1) for _ in range(n+1)]
 
-visited = [False] * (n+1)
 
 for _ in range(m):
     a, b = map(int, input().split())
-    graph[a][b] = graph[b][a] = 1
+    graph[a].append(b)
+    graph[b].append(a)
 
 
 def dfs(v):
@@ -18,8 +18,8 @@ def dfs(v):
         if not visited[i]:
             dfs(i)
 
+
 def bfs(v):
-    visited[v] = False
     queue = deque([v])
     visited[v] = True
     while queue:
@@ -31,5 +31,7 @@ def bfs(v):
                 visited[i] = True
 
 
+visited = [False] * (n+1)
 print(dfs(v))
+visited = [False] * (n+1)
 print(bfs(v))
