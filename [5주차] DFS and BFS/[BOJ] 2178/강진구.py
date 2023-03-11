@@ -28,8 +28,7 @@ def bfs(grahp, visited):
             nr = r + dr[i]
             print(nr, nc)
             if (0<=nc<m) and (0<=nr<n) and (grahp[nr][nc]==1) and (visited[nr][nc]==False):
-                cnt += 1
-                que.append((nr,nc,cnt))
+                que.append((nr,nc,cnt+1))
                 visited[nr][nc]=True
                 
 
