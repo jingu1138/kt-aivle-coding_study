@@ -34,7 +34,7 @@ def bfs(graph, visited_bfs, v):
         x = que.popleft()
         print(x, end=' ')
         
-        for g in graph:
+        for g in graph[x]:
             if not visited_bfs[g]:
                 que.append(g)
                 visited_bfs[g] = True
@@ -42,3 +42,5 @@ def bfs(graph, visited_bfs, v):
 dfs(graph, visited_dfs, v)
 print()
 bfs(graph, visited_bfs, v)
+
+
