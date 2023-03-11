@@ -2,7 +2,7 @@ from collections import deque
 
 n, m ,v = map(int, input().split())
 
-graph = [[]*(n+1) for _ in range(n+1)]
+graph = [[] for _ in range(n+1)]
 
 
 for _ in range(m):
@@ -30,8 +30,12 @@ def bfs(v):
                 queue.append(i)
                 visited[i] = True
 
+for row in range(n + 1):
+    graph[row].sort()
+
 
 visited = [False] * (n+1)
-print(dfs(v))
+dfs(v)
+print()
 visited = [False] * (n+1)
-print(bfs(v))
+bfs(v)
