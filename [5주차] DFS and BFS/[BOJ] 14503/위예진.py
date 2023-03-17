@@ -13,7 +13,7 @@ visited[fr][fc] = 1
 mr = [-1, 0, 1, 0]
 mc = [0, 1, 0, -1]
 
-while (0 < fr < row - 1) and (0 < fc < col - 1):    # 범위를 넘어서면 종료
+while True:
     br, bc = fr, fc     # 현재 위치 저장
     # 바라보는 방향에서 90도를 돌고, 청소 안된 영역인지 확인
     for i in range(1, 5):
