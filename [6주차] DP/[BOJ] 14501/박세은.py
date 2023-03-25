@@ -12,10 +12,10 @@ for _ in range(n):
 dp = [0] * (n+1)
 
 for i in range(1, n+1):
-    dp[i] = list[i-1][1]
+    dp[i] = lst[i-1][1]
     x = i + lst[i-1][0]
     while x <= 7:
-        dp[i] += list[x-1][1]
+        dp[i] += lst[x-1][1]
         x += lst[x-1][0]
         
 print(min(dp))
