@@ -1,23 +1,39 @@
 # DFS와 BFS
 import sys
+from collections import deque
 input = sys.stdin.readline
 
-N, M, V= map(int, input().split()) # 정점 개수, 간선 개수, 시작 정점
+n, m, v= map(int, input().split()) # 정점 개수, 간선 개수, 시작 정점
+graph = [[] for i in range(n+1)]
+visited = [False] * (n+1)
 
-graph = [[0 for j in range(2)]for i in range(M+1)] # 2차원 리스트 선언 *질문
-graph[0] = [0,0]
-for i in range(1,M+1):
-    l = list(map(int, input().split()))
-    graph[i] = l
-    print(graph[i])
+for i in range(m):
+    a, b = map(int, input().split())
+    graph[a].append(b)
+    graph[b].append(a)
+    graph[a].sort()
+    graph[b].sort()
+
     
-visited = [False] * M # 방문처리 false 처리
-
-def dfs(graph, v, visited): # 깊이 탐색 변수로는 graph, 시작노드, 방문처리
-    visited[v] = True # 나 방문했어요
+def dfs(visited, v, graph):
+    visited[v] = True
     print(v, end=' ')
     for i in graph[v]:
         if not visited[i]:
-            dfs(graph, i, visited)
+            dfs(visited, i, graph)
             
-print(dfs(graph, V, visited))
+def bfs(visited, start, graph):
+    q = deque([start])
+    visited[start] = True
+    while q:
+        v = q.popleft()
+        print(v, end=' ')
+        for i in graph[v]:
+            if not visited[i]:
+                q.append(i)
+                visited[i] = True
+            
+dfs(visited, v, graph)
+visited = [False] * (n+1)
+print()
+bfs(visited, v, graph)
