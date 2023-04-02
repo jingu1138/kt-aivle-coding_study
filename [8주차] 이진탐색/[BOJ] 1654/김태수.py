@@ -13,7 +13,7 @@ for i in range(1, max(data)+1):
     x = 0
     for j in range(length):
         x = x + data[j] // i 
-    if x == 11:
+    if x == k:
         test.append(i)
 
 x_len = len(test)
