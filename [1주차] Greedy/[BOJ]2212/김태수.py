@@ -1,18 +1,14 @@
-N = int(input())
-K = int(input())
-num = list(map(int, input().split()))
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+k = int(input())
+sen = list(map(int, input().split()))
+sen.sort()
+
 gap = []
-
-num.sort()
-total = max(num) - min(num)
-for i in range(1, N):
-    gap.append(num[i]-num[i-1])
-
-gap.sort(reverse = True)
-
-sum = 0
-for i in range(0, K-1):
-    sum += gap[i]
-
-answer = total - sum
-print(answer)
+for i in range(0, n-1):
+    gap.append(sen[i+1]-sen[i])
+    
+gap.sort()
+print(sum(gap[:n-k]))
