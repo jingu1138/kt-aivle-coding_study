@@ -10,71 +10,62 @@ w = list(map(int, input().split()))
 
 m_s = []
 w_s = []
+m_b = []
+w_b = []
 
-# 작은 키 원하는 남자
+# 남자
 for q in range(len(m)):
     if m[q] < 0:
         m_s.append(m[q])
-        m[q] = 0
+
+    else:
+        m_b.append(m[q])
 
 
-# 작은 키 원하는 여자
+# 여자
 for y in range(len(w)):
     if w[y] < 0:
         w_s.append(w[y])
-        w[y] = 0
+
+    else:
+        w_b.append(w[y])
 
 
-m.sort()
-w.sort()
-m_s.sort(reverse=True)
-w_s.sort(reverse=True)
+m_b.sort()
+w_b.sort()
+m_s.sort()
+w_s.sort()
 
-
+i = 0
+j = len(m_b) - 1
 cnt = 0
-i = 0
-j = 0
 
-while i != len(m):
-
-    if len(w_s) == 0:
-        break
-
-    if m[i] < (w_s[j] * -1) and m[i] != 0 and w_s[j] != 0:
+while i != len(w_s):
+    if (w_s[i] * -1) > m_b[j]:
         cnt += 1
-        w_s[j] = 0
-        j = 0
         i += 1
+        j -= 1
 
     else:
-        if j < len(w_s):
-            j += 1
+        j -= 1
 
-        else:
-            i += 1
-            continue
-
-i = 0
-j = 0
-
-while i != len(m_s):
-
-    if len(m_s) == 0:
+    if j < 0:
         break
 
-    if (m_s[i] * -1) > w[j] and w[j] != 0 and m_s[i] != 0:
+
+i = 0
+j = len(m_s) - 1
+
+while i != len(w_b):
+    if w_b[i] < (m_s[j] * -1):
         cnt += 1
-        w[j] = 0
-        j = 0
         i += 1
+        j -= 1
 
     else:
-        if j < len(w):
-            j += 1
+        j -= 1
 
-        else:
-            i += 1
-            continue
-
+    if j < 0:
+        break
 
 print(cnt)
