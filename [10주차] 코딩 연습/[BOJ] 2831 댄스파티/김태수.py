@@ -30,36 +30,39 @@ for i in girl:
     else:
         girl_down_plus.append(abs(i))
         
-# for i in boy_down:
-#     boy_down_plus.append(abs(i))
-    
-# for i in girl_down:
-#     girl_down_plus.append(abs(i))
+        
+boy_up.sort()
+girl_up.sort()
+boy_down_plus.sort()
+girl_down_plus.sort()
 
 # boy_up과 girl_down_plus
 # boy_down_plus와 girl_up만 비교하면 된다.
-a = len(boy_up)
-b = len(boy_down_plus)
-c = len(girl_up)
-d = len(girl_down_plus)
 
-if a >= d:
-    x = d
-else:
-    x = a
+# 커플변수
+cnt = 0
 
-if b <= c:
-    y = b
-else:
-    y = c
+# boy_up과 girl_down_plus 비교
+left = 0
+right = 0
+while left < len(boy_up) and right < len(girl_down_plus):
+    if (boy_up[left] < girl_down_plus[right]):
+        cnt += 1
+        left += 1
+        right += 1
+    else:
+        right += 1
+
+        
+# boy_down_plus와 girl_up 비교
+left = 0
+right = 0
+while left < len(boy_down_plus) and right < len(girl_up):
+    if (boy_down_plus[left] > girl_up[right]):
+        cnt += 1
+        left += 1
+        right += 1
+    else:
+        left += 1
     
-    
-# for i in range(0, x):
-#     if boy_up[i] < girl_down_plus[i]:
-#         cnt += 1
-
-# for i in range(0, y):
-#     if girl_up[i] < boy_down_plus[i]:
-#         cnt += 1
-
 print(cnt)
