@@ -1,5 +1,6 @@
 import sys
 input = sys.stdin.readline
+sys.setrecursionlimit(1000000) #재귀함수 늘리기
 
 n = int(input())
 
